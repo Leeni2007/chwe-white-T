@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>娃团报名</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+        }
+        iframe {
+            width: 100%;
+            height: 100vh;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+
+<iframe id="myForm" 
+src="https://docs.google.com/forms/d/e/1FAIpQLSd614Aup1Qh_y2-oECA9KnAeWhAhdnfGrH3YBIilRwvNsp_FA/viewform?embedded=true">
+</iframe>
+
+<script>
+    const formFrame = document.getElementById("myForm");
+    const targetURL = "https://sites.google.com/view/wa-tuan-join/home"; // 你的二维码页面
+
+    formFrame.onload = function() {
+        try {
+            const currentURL = formFrame.contentWindow.location.href;
+            if (currentURL.includes("formResponse")) {
+                window.location.href = targetURL;
+            }
+        } catch (e) {
+            // 跨域访问时忽略错误
+        }
+    };
+</script>
+
+</body>
+</html>
